@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, {Component, useState, useEffect} from 'react';
 import {Text, View, Button} from 'react-native';
 
 /*
@@ -13,7 +13,7 @@ class PropsManipulation extends Component{
         };
     }
 
-    /*
+    
     componentDidMount = () =>{
         this.setState({
             value: this.props.value
@@ -27,7 +27,7 @@ class PropsManipulation extends Component{
 
     updateName = () =>{
         this.setState({
-            name: (this.props.name)
+            name: (this.props.name + " " + "actualizado")
         });
     }
 
@@ -40,15 +40,23 @@ class PropsManipulation extends Component{
             </View>
         );
     }
-}*/
+}
+*/
 
 const PropsManipulation = (props) =>{
     const[name, setName] = useState(props.name);
     const[value, setValue] = useState(props.value);
 
+    /*
+    useEffect(() => {
+        alert("se uso useEffect");
+    } , [name]);
+    */
+
     const updateAll = () => {
         setName("se actualizó el nombre");
         setValue(value + 1);
+        //props.funcionPasada();
     }
 
     return(
@@ -60,5 +68,6 @@ const PropsManipulation = (props) =>{
         </View>
     );
 }
+
 
 export default PropsManipulation;
